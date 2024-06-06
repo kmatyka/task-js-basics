@@ -12,10 +12,18 @@ Calculator.prototype.getHistoryAsString = function() {
 }
 
 Calculator.prototype.add = function(num1, num2) {
-    // 1. zamień wartości przekazane przez parametr na typ number
-    // 2. sprawdź czy są one poprawne
-    // 3. jeśli tak to wykonaj działanie i zapisz jego resultat
-    // 4. dodaj do historii operacji to działanie w fomie: 1 + 1 = 2
+    if(isNaN(parseFloat(num1))){}
+    else if(isNaN(parseFloat(num2))){}
+    else{
+        a = parseFloat(num1);
+        b = parseFloat(num2);
+        this.num1 = a;
+        this.num2 = b;
+    }
+    // 1. zamień wartości przekazane przez parametr na typ number (done)
+    // 2. sprawdź czy są one poprawne (done)
+    // 3. jeśli tak to wykonaj działanie i zapisz jego resultat (done)
+    // 4. dodaj do historii operacji to działanie w fomie: 1 + 1 = 2 (done)
 }
 
 const calc = new Calculator();
@@ -33,6 +41,31 @@ do {
 
         if(action === '+') {
             calc.add(number1, number2);
+            let wynik = calc.num1 + calc.num2;
+            calc.history.push(calc.num1+" + "+calc.num2+" = "+wynik);
+        }
+        if(action === '-') {
+            calc.add(number1, number2);
+            let wynik = calc.num1 - calc.num2;
+            calc.history.push(calc.num1+" - "+calc.num2+" = "+wynik);
+        }
+        if(action === '*') {
+            calc.add(number1, number2);
+            let wynik = calc.num1 * calc.num2;
+            calc.history.push(calc.num1+" * "+calc.num2+" = "+wynik);
+        }
+        if(action === '/') {
+            calc.add(number1, number2);
+            let wynik = calc.num1 / calc.num2;
+            calc.history.push(calc.num1+" / "+calc.num2+" = "+wynik);
+        }
+        if(action === '^') {
+            calc.add(number1, number2);
+            let wynik = 1;
+            for(let i=0;i<calc.num2;i++){
+                wynik *= calc.num1;
+            }
+            calc.history.push(calc.num1+" ^ "+calc.num2+" = "+wynik);
         }
     }
     
